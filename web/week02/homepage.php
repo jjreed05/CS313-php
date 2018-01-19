@@ -22,7 +22,7 @@
                 <h1>About Me</h1>
             </div>
             <div class="panel-body">
-                <p>Welcome to my homepage. My name is Jason Reed, and I am from Las Vegas, Nevada. I served a volunteer mission for the Church of Jesus in the Japan Sendai Mission. I love to hike, weightlift, and beatbox on my spare times. Most recently, I was in an acapella group (called Apollo) as the vocal percussionist. Everyday is a new day, and I love to take advantage of that!
+                <p>Welcome to my homepage. My name is Jason Reed, and I am from Las Vegas, Nevada. I served a volunteer mission for the Church of Jesus Christ of Latter Day Saints in the Japan Sendai Mission. I love to hike, weightlift, and beatbox on my spare time. Most recently, I was in an acapella group (called Apollo) as the vocal percussionist. Everyday is a new day, and I love to take advantage of that!
                 </p>
                 <br/>
                 <h4>目指すべき所に、近道は存在しない。</h4>
