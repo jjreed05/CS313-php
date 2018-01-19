@@ -4,6 +4,8 @@
     <title>Home Page</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
+    
+    <!-- Using Bootstrap -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
     <link rel="stylesheet" href="homepage.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.0/jquery.min.js"></script>
@@ -26,8 +28,12 @@
                 </p>
                 <br/>
                 <h4>目指すべき所に、近道は存在しない。</h4>
+                
+                <!-- Using Javascript to insert translation text -->
                 <h3 id="romaji"></h4>
                 <h3 id="english"></h4>
+                
+                <!-- Calling Javascript -->
                 <button type="button" class="btn" onclick='insertTranslation()'>Translate</button>
             </div>
         </div>
@@ -35,9 +41,10 @@
         <!-- Second Panel -->
         <div class="panel panel-default">
             <div class="panel-heading">
-                <h1>Image Gallery</h1>
+                <h1>Image Gallery</h1> 
             </div>
             
+            <!-- Inserting responsive images -->
             <div class="panel-body">
                 <div class="row">
                     <div class="col-md-4">

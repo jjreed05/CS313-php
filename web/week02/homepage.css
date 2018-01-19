@@ -1,3 +1,4 @@
+/* Editing the bootstrap defaults*/
 .navbar{
     background-color: #000 !important;
     color: azure !important;
@@ -17,10 +18,12 @@ body {
     opacity: 0.85;
 }
 
+/* Making the font larger */
 .container p{
     font-size: 150%;
 }
 
+/* Customizing the translation button */
 .container .panel .panel-body .btn{
     background-color: black;
     color: white;
