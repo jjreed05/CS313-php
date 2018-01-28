@@ -19,8 +19,12 @@
     <div class="container">
         <div class="panel panel-default">
             <div class="panel-heading">
-                <h1>Coming Soon</h1>
+                <h1>Assignments</h1>
+                <ul class="list-group">
+                    <li class="list-group-item"><a href="../week03/browse.php"></a></li>
+                </ul>
             </div>
         </div>
+    </div>
 </body>
 </html>
