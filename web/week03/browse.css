@@ -1,0 +1,13 @@
+.row.equal {
+    display: flex !important;
+    display: -webkit-flex !important;
+    flex-wrap: wrap !important;
+    padding: 20px;
+
+}
+
+.thumbnail {
+    height: 100%;
+    width: 100%;
+
+}
