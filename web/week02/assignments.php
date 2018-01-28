@@ -21,7 +21,7 @@
             <div class="panel-heading">
                 <h1>Assignments</h1>
                 <ul class="list-group">
-                    <li class="list-group-item"><a href="../week03/browse.php"></a></li>
+                    <li class="list-group-item"><a href="../week03/browse.php">Shopping Cart - Week 3</a></li>
                 </ul>
             </div>
         </div>
