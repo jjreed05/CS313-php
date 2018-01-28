@@ -60,7 +60,7 @@ if (isset($_GET['submit'])){
             // Using the hidden tag again in order to define which item to remove
             echo '<input type="number" name="index" value="'.$x.'" hidden>';
             // Remove Item button
-            echo '<input type="submit" class="btn" name="submit" value="Remove Item">';
+            echo '<input type="submit" class="btn btn-primary center-block" name="submit" value="Remove Item">';
             echo '</form></td>';
             echo '</tr>';
             
@@ -70,7 +70,7 @@ if (isset($_GET['submit'])){
         echo '</tbody></table>';
         echo '<form action="checkout.php">';
         echo '<h3>Final Total: $'.$finalTotal.'</h3>';
-        echo '<input type=submit class="btn" value="Checkout"></form>';
+        echo '<input type=submit class="btn btn-primary center-block" value="Checkout"></form>';
     }
     ?>
     </p>
