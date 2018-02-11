@@ -55,35 +55,35 @@ create table login(
 
 insert into categories (category) values ('Peace Dollar');
 
-insert into images(imgname, img) values('MS63', 'Capture.jpg');
+insert into images(imgname, img) values('MS63', 'pictures/Capture.JPG');
 
 insert into products(coinyear, coinname, coinamount, saleprice, imageid, categoryid) values('1921', 'PCGS MS63', '1', '99.99', '1', '1');
 
-insert into images(imgname, img) values('AU58', 'AU58.jpg');
+insert into images(imgname, img) values('AU58', 'pictures/AU58.JPG');
 
 insert into products(coinyear, coinname, coinamount, saleprice, imageid, categoryid) values('1921', 'PCGS AU58', '1', '49.99', '2', '1');
 
 insert into categories (category) values ('Nickel');
 
-insert into images(imgname, img) values('PR66', 'PR66.jpg');
+insert into images(imgname, img) values('PR66', 'pictures/PR66.JPG');
 
 insert into products(coinyear, coinname, coinamount, saleprice, imageid, categoryid) values('1942', 'PCGS PR66', '0.05', '99.99', '3', '2');
 
 insert into categories (category) values ('Liberty Gold');
 
-insert into images(imgname, img) values('MS62', 'MS62.jpg');
+insert into images(imgname, img) values('MS62', 'pictures/MS62.JPG');
 
 insert into products(coinyear, coinname, coinamount, saleprice, imageid, categoryid) values('1906', 'PCGS MS62', '2.50', '99.99', '4', '3');
 
 insert into categories (category) values ('Penny');
 
-insert into images(imgname, img) values('MS67', 'MS67.jpg');
+insert into images(imgname, img) values('MS67', 'pictures/MS67.JPG');
 
 insert into products(coinyear, coinname, coinamount, saleprice, imageid, categoryid) values('1943', 'PCGS MS67', '0.01', '99.99', '5', '4');
 
 insert into categories (category) values ('Dime');
 
-insert into images(imgname, img) values('XF45', 'XF45.jpg');
+insert into images(imgname, img) values('XF45', 'pictures/XF45.JPG');
 
 insert into products(coinyear, coinname, coinamount, saleprice, imageid, categoryid) values('1911', 'PCGS XF45', '0.10', '99.99', '6', '5');
 
