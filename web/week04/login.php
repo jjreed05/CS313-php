@@ -2,19 +2,7 @@
 session_start();
 include_once("items.php");
 include_once("navbar.php");
-
-try
-{
-  $user = 'postgres';
-  $password = '4857';
-  $db = new PDO('pgsql:host=127.0.0.1;dbname=peacedollar', $user, $password);
-    
-}
-catch (PDOException $ex)
-{
-  echo 'Error!: ' . $ex->getMessage();
-  die();
-}
+include_once("connectDb.php");
 
 if(isset($_POST['submit'])){
     $username = $_POST['user'];
