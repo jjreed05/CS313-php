@@ -105,7 +105,7 @@ foreach($db->query('SELECT * FROM products AS a JOIN categories AS b ON b.id = a
     <br>
     <div class="container">
         <h1>Add items to the Database</h1><br>
-        <form class="form-horizontal" action="insertIntoDb.php" method="POST" enctype="multipart/form-data">
+        <form class="form-horizontal" action="insertIntoDB.php" method="POST" enctype="multipart/form-data">
             <div class="form-group">
                 <label class="control-label col-sm-2" for="year">Coin Year:</label>
                 <div class="col-sm-10">
