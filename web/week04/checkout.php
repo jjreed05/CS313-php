@@ -1,12 +1,14 @@
 <?php 
 include_once("items.php");
 include_once("navbar.php");
+include_once("connectDb.php");
 session_start();
 
 $firstError = "";
 $lastError = "";
 $streetError = "";
 $cityError = "";
+$stateError = "";
 $zipError = "";
 
 // Using this logic to validate the form
@@ -56,14 +58,53 @@ if(isset($_POST['submitted'])){
     
     // If there are no errors, set the session variables and redirect the page.
     if($error == 0){
-        $_SESSION['first'] = $_POST['first'];
-        $_SESSION['last'] = $_POST['last'];
-        $_SESSION['street'] = $_POST['street'];
-        $_SESSION['city'] = $_POST['city'];
-        $_SESSION['state'] = $_POST['state'];
-        $_SESSION['zip'] = $_POST['zip'];
-        $_SESSION['email'] = $_POST['email'];
+        $first = $_POST['first'];
+        $last = $_POST['last'];
+        $street = $_POST['street'];
+        $city = $_POST['city'];
+        $state = $_POST['state'];
+        $zip = $_POST['zip'];
+        $email = $_POST['email'];
+        $orderdate = date('Y-m-d G:i:s');
+        
+        // Insert into the orders table
+        $query = "INSERT INTO orders (firstname, lastname, street, city, state, zip, email, orderdate) VALUES (:first, :last, :street, :city, :state, :zip, :email, :orderdate)";
+        $stmt = $db->prepare($query);
+        $stmt->bindValue(':first', $first, PDO::PARAM_STR);
+        $stmt->bindValue(':last', $last, PDO::PARAM_STR);
+        $stmt->bindValue(':street', $street, PDO::PARAM_STR);
+        $stmt->bindValue(':city', $city, PDO::PARAM_STR);
+        $stmt->bindValue(':state', $state, PDO::PARAM_STR);
+        $stmt->bindValue(':zip', $zip, PDO::PARAM_STR);
+        $stmt->bindValue(':email', $email, PDO::PARAM_STR);
+        $stmt->bindValue(':orderdate', $orderdate, PDO::PARAM_STR);
+        $stmt->execute();
+        
+        $table = array();
+        $table = $_SESSION['shopCart'];
+        $orderId = $db->lastInsertId('orders_id_seq');
+        
+        // Insert into our order details table
+        for($x = 0; $x < count($table); $x++){
+            $items = $table[$x];
+            $productId = $items->itemNum;
+            $query = "INSERT INTO details (orderid, productid) VALUES (:orderId, :productId)";
+            $stmt = $db->prepare($query);
+            $stmt->bindValue(':orderId', $orderId, PDO::PARAM_INT);
+            $stmt->bindValue(':productId', $productId, PDO::PARAM_INT);
+            $stmt->execute();
+        }
+        
+        $_SESSION['first'] = $first;
+        $_SESSION['last'] = $last;
+        $_SESSION['street'] = $street;
+        $_SESSION['city'] = $city;
+        $_SESSION['state'] = $state;
+        $_SESSION['zip'] = $zip;
+        $_SESSION['email'] = $email;
+    
         header("Location: confirmation.php");
+        
     }
     
 }
@@ -91,8 +132,9 @@ if(isset($_POST['submitted'])){
 <body>
     <div class="container">
     <div class="col-lg-offset-3 col-lg-6">
+        <div class="thumbnail">
         <h2 class="text-center">Contact Information and Billing Address</h2>
-        <form class="horizontal" action="?" method="post">
+        <form class="horizontal" action="checkout.php" method="post">
             <div class="form-group">
                 <label for="first">First Name:</label>
                 <input type="text" class="form-control" name="first" id="first" value="<?php if(isset($_POST['first'])){echo $_POST['first'];} ?>">
@@ -129,6 +171,7 @@ if(isset($_POST['submitted'])){
             </div>
             <input class="btn btn-primary center-block" type="submit" name="submitted" class="btn" value="Checkout">
         </form>
+        </div>
     </div>
     </div>
 </body>

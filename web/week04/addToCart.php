@@ -2,31 +2,33 @@
 session_start();
 include_once("items.php");
 include_once("navbar.php");
+include_once("connectDb.php");
    
 $index = $_POST['index'];
 
-$array = array();
-$array = $_SESSION['array']; 
-$item = $array[$index];
+$query ='SELECT * FROM products AS a JOIN categories AS b ON b.id = a.categoryID JOIN images AS c on c.id = a.imageid WHERE a.id = :index';
+$stmt = $db->prepare($query);
+$stmt->bindValue(':index', $index, PDO::PARAM_INT);
+$stmt->execute();
+$table = $stmt->fetch(PDO::FETCH_ASSOC);
+
+$year = $table['coinyear'];
+$name = $table['coinname'];
+$amount = $table['coinamount'];
+$price = $table['saleprice'];
+$category = $table['category'];
+$image = 'null';
+$itemNum =  $table['id'];
+$object = new Coin($year, $name, $amount, $price, $category, $image, $itemNum);
 
 // Add items to the cart
 if(empty($_SESSION['shopCart'])){
-    $_SESSION['shopCart'] = array($item);
+    $_SESSION['shopCart'] = array($object);
     //$_SESSION['shopCart'] = $shopCart;
 }
-else{
-    array_push($_SESSION['shopCart'], $item);
+else{ 
+    array_push($_SESSION['shopCart'], $object);
 }
-
-/*$test = array();
-$test = $_SESSION['shopCart'];
-$testing = $test[0];
-echo 'Testing objects '.$testing->name.'<br>';
-
-
-foreach($_SESSION['shopCart'] as $object){
-    echo 'Test: '.$object->quantity.'<br>';
-}*/
 
 ?>
 <!DOCTYPE html>

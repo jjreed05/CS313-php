@@ -8,7 +8,7 @@ $array = array();
 $input = $_GET['userInput'];
 
 $table = $db->prepare('SELECT * FROM products AS a JOIN categories AS b ON b.id = a.categoryID JOIN images AS c on c.id = a.imageId WHERE b.category ILIKE :input OR coinname ILIKE :input');
-$table->bindValue(':input', '%'.$input.'%', PDO::PARAM_INT);
+$table->bindValue(':input', '%'.$input.'%', PDO::PARAM_STR);
 $table->execute();
 $rows = $table->fetchAll(PDO::FETCH_ASSOC);
 
@@ -61,7 +61,7 @@ if(empty($_SESSION['array'])){
         // of hard coding each element
         for($x = 0; $x < count($array); $x++){
             $item = $array[$x];
-            $indexVal = $item->itemNum -1;
+            $indexVal = $item->itemNum;
             
             // Organize the data into 3 columns.
             // Create a new row if it's the first array item
@@ -79,7 +79,7 @@ if(empty($_SESSION['array'])){
             echo '<h2>'."$item->name".'</h2>';
             echo '<a href="'.$item->image.'" target="_blank">';
             echo '<img class="img-responsive" src="'.$item->image.'" alt="Sony"></a>';
-            echo '<h4>'.$item->category.'</h4>';
+            echo '<h4>'.$item->year.' '.$item->category.'</h4>';
             echo '<div class="caption"><h5>$'.$item->price.' + Free Shipping</h5></div>';
             echo '<div class="input">';
             echo '<form action="addToCart.php" method="post">';
@@ -87,7 +87,6 @@ if(empty($_SESSION['array'])){
             // Using the hidden tag to get the value of the index so that
             // I can get the item off the array on the next page
             echo '<input type="number" name="index" value="'.$indexVal.'" hidden>';
-            echo '<p>Index: '.$indexVal.'</p>';
             echo '<input type="submit" value="Add to Cart">';
             echo '</form></div></div></div>';
 

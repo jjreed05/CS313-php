@@ -4,12 +4,13 @@ include_once("items.php");
 include_once("navbar.php");
 include_once("connectDb.php");
 
+
 if(isset($_POST['submit'])){
     $username = $_POST['user'];
     $password = $_POST['password'];
     $table = $db->prepare('SELECT userName, userPass FROM login WHERE userName=:userName AND userPass=:userPass ');
-    $table->bindValue(':userName', $username, PDO::PARAM_STR);
-    $table->bindValue(':userPass', $password, PDO::PARAM_STR);
+    $table->bindValue(':userName', $username, PDO::PARAM_INT);
+    $table->bindValue(':userPass', $password, PDO::PARAM_INT);
     $table->execute();
     $rows = $table->fetchAll(PDO::FETCH_ASSOC);
     

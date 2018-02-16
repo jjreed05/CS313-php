@@ -50,6 +50,9 @@ if(empty($_SESSION['array'])){
         $count = count($array);
         $rowTrack = 0;
         
+        if ($count == 0){
+            echo "<h2>Sorry, there are no current items for sale";
+        }
         // I am using one template to display the items instead
         // of hard coding each element
         for($x = 0; $x < count($array); $x++){
@@ -61,25 +64,25 @@ if(empty($_SESSION['array'])){
                 echo '<div class="row equal">';
             }
             // Create a new row if it's the 4th item 
-            if(($x + 1) % 4 == 0){
+            if(($x) % 3 == 0){
                 echo '</div>';
                 echo '<div class="row equal">';
             }
             
             echo '<div class="col-md-4">';
             echo '<div class="thumbnail">';
-            echo '<h2>'."$item->name".'</h2>';
+            echo '<h2>'.$item->name.'</h2>';
             echo '<a href="'.$item->image.'" target="_blank">';
             echo '<img class="img-responsive" src="'.$item->image.'" alt="Sony"></a>';
-            echo '<h4>'.$item->category.'</h4>';
-            echo '<div class="caption"><h5>$'.$item->price.' + Free Shipping</h5></div>';
+            echo '<h4>'.$item->year.' '.$item->category.'</h4>';
+            echo '<div class="caption"><h5>$'.$item->price.'</h5></div>';
+            echo "<h4>Index: ".$item->itemNum."</h4>";
             echo '<div class="input">';
             echo '<form action="addToCart.php" method="post">';
             
             // Using the hidden tag to get the value of the index so that
             // I can get the item off the array on the next page
-            echo '<input type="number" name="index" value="'.$x.'" hidden>';
-            echo '<p>Index: '.$x.'</p>';
+            echo '<input type="number" name="index" value="'.$item->itemNum.'" hidden>';
             echo '<input type="submit" value="Add to Cart">';
             echo '</form></div></div></div>';
 

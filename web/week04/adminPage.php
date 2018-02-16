@@ -1,17 +1,42 @@
 <?php
+session_start();
 include_once("navbar.php");
 include_once("items.php");
 include_once("connectDb.php");
-session_start();
 
 if(isset($_POST['logout'])){
     $_SESSION['authentication'] = False;
 }
+
+// Don't allow anyone to login
 if ($_SESSION['authentication'] == False){
     header("Location: login.php");
     exit();
 }
 
+// Remove an item off the database
+if(isset($_POST['remove'])){
+    // Delete the product off the database
+    $dbIndex = ($_POST['dbNumber']);
+    $table = $db->prepare("DELETE FROM products WHERE id=:index");
+    $table->bindValue(":index", $dbIndex, PDO::PARAM_INT);
+    $table->execute();
+    
+    // Find the image location and delete it from the folder
+    $table = $db->prepare("SELECT * FROM images WHERE id=:index");
+    $table->bindValue(':index', $dbIndex, PDO::PARAM_INT);
+    $table->execute();
+    $rows = $table->fetch(PDO::FETCH_ASSOC);
+    $fileName = $rows['img'];
+    //unlink("$fileName");
+    
+    // Delete image from database
+    $table = $db->prepare("DELETE FROM images WHERE id=:index");
+    $table->bindValue(":index", $dbIndex, PDO::PARAM_INT);
+    $table->execute();
+}
+
+// Used to display the current items on the database
 $array = array();
 
 foreach($db->query('SELECT * FROM products AS a JOIN categories AS b ON b.id = a.categoryID JOIN images AS c on c.id = a.imageid') as $row){
@@ -51,7 +76,6 @@ foreach($db->query('SELECT * FROM products AS a JOIN categories AS b ON b.id = a
     else{
         // Creating a table using the bootstrap framework
         echo '<div class="container"><h1>Items in Database</h1>';
-        echo '<form action="#">';
         echo '<table class="table">';
         echo '<thread><tr><th>Option</th><th>Year</th><th>Category</th><th>Item</th><th>Dollar Amount</th><th>Price to Sell</th></tr></thread>';
         echo '<tbody>';
@@ -59,23 +83,78 @@ foreach($db->query('SELECT * FROM products AS a JOIN categories AS b ON b.id = a
         // Display the items in the table as well as calculating the total
         for($x = 0; $x < count($array); $x++){
             $items = $array[$x];
+            echo '<form action="adminPage.php" method="post">';
             echo '<tr>';
-            echo '<td><input type="radio" name="action"></td>';
+            echo '<input type="number" name="dbNumber" value="'.$items->itemNum.'" hidden>';
+            // Remove Item button
+            echo '<td><input type="submit" class="btn btn-primary" name="remove" value="Remove"></td>';
             echo '<td>'.$items->year.'</td>';
             echo '<td>'.$items->category.'</td>';
             echo '<td>'.$items->name.'</td>';
             echo '<td>$'.$items->amount.'</td>';
             echo '<td>$'.$items->price.'</td>';
-            echo '<input type="number" name="index" value="'.$items->itemNum.'" hidden>';
-            echo '</tr>';
+            echo '</tr></form>';
+        
         }
         echo '</tbody></table>';
-        echo '<input type=submit class="btn btn-primary" value="Remove">';
-        echo '</form></div>';
+        echo '</div>';
         
     }
     ?>
     </p>
+    <br>
+    <div class="container">
+        <h1>Add items to the Database</h1><br>
+        <form class="form-horizontal" action="insertIntoDb.php" method="POST" enctype="multipart/form-data">
+            <div class="form-group">
+                <label class="control-label col-sm-2" for="year">Coin Year:</label>
+                <div class="col-sm-10">
+                    <input type="number" class="form-control" name="coinYear" placeholder="1700">
+                </div>    
+            </div>
+            <div class="form-group">
+                <label class="control-label col-sm-2" for="name">Coin Name:</label>
+                <div class="col-sm-10">
+                    <input type="text" class="form-control" name="coinName" placeholder="Enter Name">
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="control-label col-sm-2" for="amount">Coin Amount:</label>
+                <div class="col-sm-10">                                
+                    <input type="number" class="form-control" name="coinAmount" min="0.01" step="0.01" placeholder="0.00">
+                </div>   
+            </div>
+            <div class="form-group">
+                <label class="control-label col-sm-2" for="sale">Sale Price:</label>
+                <div class="col-sm-10"> 
+                    <input type="number" class="form-control" name="saleprice" min="0.01" step="0.01" placeholder="0.00">
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="control-label col-sm-2" for="category">Type of Coin:</label>
+                <div class="col-sm-10"> 
+                    <input type="text" class="form-control" name="category" placeholder="ie Penny">
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="control-label col-sm-2" for="category">Upload Image: </label>
+                <div class="col-sm-10"> 
+                    <input type="file" class="form-control" name="image">
+                    <?php 
+                    if (isset($_GET['error'])){
+                        $error = $_GET['error'];
+                        echo "<p class='text-danger'>".$error."</p>";
+                    }
+                    ?>
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="col-sm-offset-2 col-sm-10">
+                    <input type="submit" class="btn btn-primary" name="insert" value="Upload to Database">
+                </div>
+            </div>
+        </form>
+    </div>
     <br>
     <div class="container">
         <div class="col-md-12 text-center">
