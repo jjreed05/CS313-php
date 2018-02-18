@@ -36,9 +36,18 @@ if(isset($_POST['remove'])){
     $table->execute();
 }
 
+// Delete the order
+if(isset($_POST['removeOrder'])){
+    $dbIndex = $_POST['orderId'];
+    $table = $db->prepare("DELETE FROM details WHERE details_id=:index");
+    $table->bindValue(":index", $dbIndex, PDO::PARAM_INT);
+    $table->execute();
+}
+
 // Used to display the current items on the database
 $array = array();
 
+// Pull the products off the database and push it into an array
 foreach($db->query('SELECT * FROM products AS a JOIN categories AS b ON b.id = a.categoryID JOIN images AS c on c.id = a.imageid') as $row){
     $year = $row['coinyear'];
     $name = $row['coinname'];
@@ -50,6 +59,26 @@ foreach($db->query('SELECT * FROM products AS a JOIN categories AS b ON b.id = a
     
     $object = new Coin($year, $name, $amount, $price, $category, $image, $itemNum);
     array_push($array, $object);
+}
+
+// Used to display the orders
+$shipment = array();
+
+// Grab the order off the the database and push it into the array
+foreach($db->query('SELECT * FROM details AS a JOIN orders AS b on a.orderid = b.id JOIN products AS c ON a.productid = c.id') as $orders){
+    $name = $orders['firstname']." ".$orders['lastname'];
+    $street = $orders['street'];
+    $city = $orders['city'];
+    $state = $orders['state'];
+    $zip = $orders['zip'];
+    $email = $orders['email'];
+    $orderDate = $orders['orderdate'];
+    $coinYear = $orders['coinyear'];
+    $coinName = $orders['coinname'];
+    $orderId = $orders['details_id'];
+    
+    $order = new Orders($name, $street, $city, $state, $zip, $email, $orderDate, $coinYear, $coinName, $orderId);
+    array_push($shipment, $order);
 }
 
 ?>
@@ -154,6 +183,43 @@ foreach($db->query('SELECT * FROM products AS a JOIN categories AS b ON b.id = a
                 </div>
             </div>
         </form>
+    </div>
+    <br>
+    <div class="container">
+        <?php 
+        if (empty($shipment)){
+        echo '<h1>No Current Orders</h1>';
+        }
+        else{
+            // Creating a table using the bootstrap framework
+            echo '<div class="container"><h1>Orders</h1>';
+            echo '<table class="table">';
+            echo '<thread><tr><th>Option</th><th>Name</th><th>Street</th><th>City</th><th>State</th><th>Zip</th><th>Email</th><th>Time</th><th>Coin Year</th><th>Coin Name</th></tr></thread>';
+            echo '<tbody>';
+        
+            // Display the items in the table as well as calculating the total
+            for($x = 0; $x < count($shipment); $x++){
+                $items = $shipment[$x];
+                echo '<form action="adminPage.php" method="post">';
+                echo '<tr>';
+                echo '<input type="number" name="orderId" value="'.$items->orderId.'" hidden>';
+                // Remove Item button
+                echo '<td><input type="submit" class="btn btn-primary" name="removeOrder" value="Remove"></td>';
+                echo '<td>'.$items->name.'</td>';
+                echo '<td>'.$items->street.'</td>';
+                echo '<td>'.$items->city.'</td>';
+                echo '<td>'.$items->state.'</td>';
+                echo '<td>'.$items->zip.'</td>';
+                echo '<td>'.$items->email.'</td>';
+                echo '<td>'.$items->orderDate.'</td>';
+                echo '<td>'.$items->coinYear.'</td>';
+                echo '<td>'.$items->coinName.'</td>';
+                echo '</tr></form>';
+        
+            }
+            echo '</tbody></table>';
+        }
+        ?>
     </div>
     <br>
     <div class="container">

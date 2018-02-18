@@ -21,6 +21,32 @@ class Coin{
     
 }
 
+class Orders{
+    public $name = 'default';
+    public $street = 'default';
+    public $city = 'default';
+    public $state = 'default';
+    public $zip = '00000';
+    public $email = '';
+    public $orderDate = 'null';
+    public $coinYear = '0000';
+    public $coinName = 'default';
+    public $orderId = '0';
+    
+    // Constructor
+    public function __construct($name, $street, $city, $state, $zip, $email, $orderDate, $coinYear, $coinName, $orderId){
+        $this->name = $name;
+        $this->street = $street;
+        $this->city = $city;
+        $this->state = $state;
+        $this->zip = $zip;
+        $this->email = $email;
+        $this->orderDate = $orderDate;
+        $this->coinYear = $coinYear;
+        $this->coinName = $coinName;
+        $this->orderId = $orderId;
+    }    
+}
 
 /*echo "hello world!";
 

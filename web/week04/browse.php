@@ -76,7 +76,6 @@ if(empty($_SESSION['array'])){
             echo '<img class="img-responsive" src="'.$item->image.'" alt="Sony"></a>';
             echo '<h4>'.$item->year.' '.$item->category.'</h4>';
             echo '<div class="caption"><h5>$'.$item->price.'</h5></div>';
-            echo "<h4>Index: ".$item->itemNum."</h4>";
             echo '<div class="input">';
             echo '<form action="addToCart.php" method="post">';
             

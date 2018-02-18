@@ -1,4 +1,4 @@
-drop table if exists cart, categories, details, images, login, orders, products;
+drop table if exists categories, details, images, login, orders, products;
 
 create table categories(
     id serial primary key not null,
@@ -34,7 +34,7 @@ create table orders(
 );
 
 create table details(
-    id serial primary key not null,
+    details_id serial primary key not null,
     orderid int not null references orders,
     productid int not null references products
 );

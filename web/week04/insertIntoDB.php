@@ -10,7 +10,6 @@ if (isset($_POST['insert'])){
     $category = $_POST['category'];
     $categoryId = 0;
     
-    
     // Image upload
     $file = $_FILES['image'];
     $fileName = $_FILES['image']['name'];
