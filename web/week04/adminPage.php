@@ -1,6 +1,5 @@
 <?php
 session_start();
-include_once("navbar.php");
 include_once("items.php");
 include_once("connectDb.php");
 
@@ -85,10 +84,10 @@ foreach($db->query('SELECT * FROM details AS a JOIN orders AS b on a.orderid = b
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <title>Shopping Cart</title>
+    <title>Admin</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    
+    <link rel="stylesheet" type="text/css" href="adminPage.css">
     <!-- Using Bootstrap -->
     <link rel="stylesheet"href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.0/jquery.min.js"></script>
@@ -97,6 +96,51 @@ foreach($db->query('SELECT * FROM details AS a JOIN orders AS b on a.orderid = b
 </head>
 
 <body>
+    <?php
+    $file = pathinfo($_SERVER['PHP_SELF'], PATHINFO_FILENAME);
+    ?>
+    
+    <!-- Did not include navbar file because I needed to change the admin button to logout -->
+    <nav class="navbar navbar-inverse">
+        <div class="conatainer-fluid">
+            
+            <!-- Logo -->
+            <div class="navbar-header">
+                <a class="navbar-brand">PeaceDollar</a>
+            </div>
+            
+            <!-- Menu Items-->
+            <div>
+                <!-- Iterate through to see which web page is active -->
+                <ul class="nav navbar-nav">
+                    <li <?php if ($file === 'browse') echo 'class="active"' ?>><a href="browse.php">Home</a></li>
+                    <li <?php if ($file === 'shoppingCart') echo 'class="active"' ?>><a href="shoppingCart.php">Shopping Cart</a></li>
+                </ul>
+                <div class="dropdown">
+                <ul class="nav navbar-nav navbar-right">
+                    <li id="dropdown">
+                            <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">User
+                            <span class="caret"></span></button>
+                            <ul class="dropdown-menu">
+                                <li>
+                                    <a><form action="adminPage.php" method="post"><span class="glyphicon glyphicon-user"><input type=submit class="btn btn-link" name="logout" value="Logout"></span></form></a>
+                                </li>
+                                <li>
+                                <a href="editPassword.php"><span class="glyphicon glyphicon-cog"></span> Update Password</a>
+                                </li>
+                            </ul>
+                    </li>
+                </ul>
+                </div>
+                <form action="search.php" method="get" class="form-inline nav navbar-nav navbar-right" id="search">
+                    <input class="form-control mr-sm-2" type="text" name="userInput" placeholder="Search">
+                    <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search
+                    </button>
+                </form>
+            </div>
+        </div>
+    </nav>
+    
     <p>
     <?php
     if (empty($array)){
@@ -222,15 +266,5 @@ foreach($db->query('SELECT * FROM details AS a JOIN orders AS b on a.orderid = b
         ?>
     </div>
     <br>
-    <div class="container">
-        <div class="col-md-12 text-center">
-            <form action='adminPage.php' method="post">
-            <?php
-        
-                echo '<input type=submit class="btn" name="logout" value="Logout">';
-            ?>
-            </form>
-        </div>
-    </div>
    
 </body>

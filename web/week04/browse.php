@@ -5,7 +5,11 @@ include_once("navbar.php");
 include_once("connectDb.php");
 
 $array = array();
-foreach($db->query('SELECT * FROM products AS a JOIN categories AS b ON b.id = a.categoryID JOIN images AS c on c.id = a.imageid') as $row){
+$table = $db->prepare('SELECT * FROM products AS a JOIN categories AS b ON b.id = a.categoryID JOIN images AS c on c.id = a.imageid');
+$table->execute();
+$rows = $table->fetchAll(PDO::FETCH_ASSOC);
+
+foreach($rows as $row){
     $year = $row['coinyear'];
     $name = $row['coinname'];
     $amount = $row['coinamount'];

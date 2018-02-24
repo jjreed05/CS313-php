@@ -42,7 +42,7 @@ create table details(
 create table login(
     id serial primary key not null,
     userName varchar(50) not null,
-    userPass varchar(50) not null
+    userPass varchar(150) not null
 );
 
 insert into categories (category) values ('Peace Dollar');
@@ -79,7 +79,7 @@ insert into images(imgname, img) values('XF45', 'pictures/XF45.JPG');
 
 insert into products(coinyear, coinname, coinamount, saleprice, imageid, categoryid) values('1911', 'PCGS XF45', '0.10', '99.99', '6', '5');
 
-insert into login(userName, userPass) values ('Admin', 'LargeStar684MilkyWay');
+insert into login(userName, userPass) values ('Admin', '$2y$10$XFDrPTZBDhQgcw0/iNKNAeI9AfnLjmtLUv5eALLNVE2Uz3NiNcCPS');
 
 
 
