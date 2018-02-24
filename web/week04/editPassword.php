@@ -101,6 +101,7 @@ if(isset($_POST['insert'])){
             </div>
         </div>
     </nav>
+    <a href="adminPage.php"><span class="glyphicon glyphicon-home"></span> Admin Homepage</a>
     
     <div class="container">
         <h1>Change Password</h1>
