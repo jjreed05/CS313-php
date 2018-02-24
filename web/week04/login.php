@@ -12,7 +12,7 @@ if($_SESSION['authentication'] == TRUE){
 if(isset($_POST['submit'])){
     
     $username = $_POST['user'];
-    $table = $db->prepare('SELECT username, userpass FROM login WHERE username=:userName');
+    $table = $db->prepare('SELECT username, userpass FROM login WHERE username=:username');
     $table->bindValue(':username', $username, PDO::PARAM_STR);
     $table->execute();
     $rows = $table->fetch(PDO::FETCH_ASSOC);
