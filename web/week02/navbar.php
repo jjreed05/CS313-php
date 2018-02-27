@@ -30,7 +30,7 @@
                 <!-- Iterate through to see which web page is active -->
                 <ul class="nav navbar-nav">
                     <li <?php if ($file === 'homepage') echo 'class="active"' ?>><a href="homepage.php">Home</a></li>
-                    <li <?php if ($file === 'assignments') echo 'class="active"' ?>><a href="assignments.php">Assignments</a></li>
+                    <li <?php if ($file === 'assignments') echo 'class="active"' ?>><a href="assignments.php">Projects</a></li>
                     <li><a href="https://github.com/jjreed05">Github</a></li>
                 </ul>
             </div>

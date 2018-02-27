@@ -19,9 +19,10 @@
     <div class="container">
         <div class="panel panel-default">
             <div class="panel-heading">
-                <h1>Assignments</h1>
+                <h1>Projects</h1>
                 <ul class="list-group">
                     <li class="list-group-item"><a href="../week03/browse.php">Shopping Cart - Week 3</a></li>
+                    <li clas="list-group-item"><a href="../week04/browse.php">Ecommerce and Database Website</a></li>
                 </ul>
             </div>
         </div>
