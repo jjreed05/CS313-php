@@ -24,7 +24,7 @@
                 <h1>About Me</h1>
             </div>
             <div class="panel-body">
-                <p>Welcome to my homepage. My name is Jason Reed, and I am from Las Vegas, Nevada. I served a volunteer mission for the Church of Jesus Christ of Latter Day Saints in the Japan Sendai Mission. I am currently studying Software Engineering at Brigham Young University. Thanks for checking out my page.
+                <p>Welcome to my homepage. My name is Jason Reed, and I am from Las Vegas, Nevada. I served a volunteer mission for the Church of Jesus Christ of Latter Day Saints in the Japan Sendai Mission. I am currently studying Software Engineering at Brigham Young University - Idaho. Thanks for checking out my page.
                 </p>
                 <br/>
                 <h4>目指すべき所に、近道は存在しない。</h4>
