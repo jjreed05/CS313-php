@@ -23,8 +23,8 @@
                 <ul class="list-group">
                     <li class="list-group-item"><a href="../week03/browse.php">Shopping Cart Practice</a></li>
                     <li class="list-group-item"><a href="../week04/browse.php">Ecommerce and Database Website</a></li>
-                    <li>Student Activities Android Application</li>
-                    <li>Embedded Systems: RoboBird</li>
+                    <li class="list-group-item">Student Activities Android Application</li>
+                    <li class="list-group-item">Embedded Systems: RoboBird</li>
                 </ul>
             </div>
         </div>
