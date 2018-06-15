@@ -73,7 +73,7 @@ if(empty($_SESSION['array'])){
                 echo '<div class="row equal">';
             }
             
-            echo '<div class="col-md-4">';
+            echo '<div class="col-md-5">';
             echo '<div class="thumbnail">';
             echo '<h2>'.$item->name.'</h2>';
             echo '<a href="'.$item->image.'" target="_blank">';
