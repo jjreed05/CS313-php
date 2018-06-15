@@ -90,10 +90,10 @@ if(empty($_SESSION['array'])){
             echo '</form></div></div></div>';
 
             // Close the row div tag
-            $rowTrack++;
             if($rowTrack == $count){
                 echo '</div>'; 
             }
+            $rowTrack++;
         }
         ?>
     </div>
