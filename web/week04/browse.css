@@ -2,13 +2,13 @@ body{
     background-color: #8c8c8c !important; 
 }
 
-/*.row.equal {
+.row.equal {
     display: flex !important;
     display: -webkit-flex !important;
     flex-wrap: wrap !important;
     padding: 10px;
 
-}*/
+}
 
 .thumbnail {
     height: 100%;
