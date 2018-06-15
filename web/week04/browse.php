@@ -62,13 +62,13 @@ if(empty($_SESSION['array'])){
         for($x = 0; $x < count($array); $x++){
             $item = $array[$x];
             
-            // Organize the data into 3 columns.
+            // Organize the data into 4 columns.
             // Create a new row if it's the first array item
             if($x == 0){
                 echo '<div class="row equal">';
             }
             // Create a new row if it's the 4th item 
-            if(($x) % 3 == 0){
+            if(($x) % 2 == 0){
                 echo '</div>';
                 echo '<div class="row equal">';
             }
