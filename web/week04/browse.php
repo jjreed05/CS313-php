@@ -68,7 +68,7 @@ if(empty($_SESSION['array'])){
                 echo '<div class="row equal">';
             }
             // Create a new row if it's the 4th item 
-            if(($x) % 4 == 0){
+            if(($x) % 3 == 0){
                 echo '</div>';
                 echo '<div class="row equal">';
             }

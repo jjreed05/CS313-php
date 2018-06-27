@@ -1,7 +1,3 @@
-body{
-    background-color: #8c8c8c !important; 
-}
-
 .row.equal {
     display: flex !important;
     display: -webkit-flex !important;
