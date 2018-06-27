@@ -220,7 +220,7 @@ if(empty($_SESSION['array'])){
                         </div>
                     </div>
                 </div>
-                <div class="col-12 col-md-6 col-lg-4">
+                <div class="col-12 col-md-6 col-lg-4"> 
                     <div class="card">
                         <img class="card-img-top" src="https://dummyimage.com/600x400/55595c/fff" alt="Card image cap">
                         <div class="card-body">
