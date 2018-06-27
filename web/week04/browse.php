@@ -159,6 +159,7 @@ if(empty($_SESSION['array'])){
         </div>
     </div>
 </div>
+
 <div class="container">
     <div class="row">
         <div class="col-12 col-sm-3">
@@ -182,8 +183,50 @@ if(empty($_SESSION['array'])){
                 </div>
             </div>
         </div>
+        
+        
         <div class="col">
-            <div class="row">
+            <?php
+            $count = count($array);
+        
+            if ($count == 0){
+                echo "<h2>Sorry, there are no current items for sale";
+            }
+            // I am using one template to display the items instead
+            // of hard coding each element
+            for($x = 0; $x < count($array); $x++){
+                $item = $array[$x];
+            
+                // Organize the data into 4 columns.
+                // Create a new row if it's the first array item
+                if($x == 0){
+                    echo '<div class="row">';
+                }
+                
+                echo '<div class="col-12 col-md-6 col-lg-4">';
+                echo '<div class="card">';
+                echo '<img class="img-responsive" src="'.$item->image.'" alt="'.$item->name.'">';
+                echo '<div class="card-body">';
+                echo '<h4 class="card-title">'.$item->name.'</h4>';
+                echo '<p class="card-text">'.$item->year.' '.$item->category.'</p>';
+                echo '<div class="row">';
+                echo '<div class="col">';
+                echo '<p class="btn btn-danger btn-block">'.$item->price.'</p>';
+                echo '</div>';
+                echo '<div class="col">';
+                echo '<div class="input">';
+                echo '<form action="addToCart.php" method="post">';
+            
+                // Using the hidden tag to get the value of the index so that
+                // I can get the item off the array on the next page
+                echo '<input type="number" name="index" value="'.$item->itemNum.'" hidden>';
+                echo '<input class="btn btn-success btn-block" type="submit" value="Add to Cart">';
+                echo '</form>';
+                echo '</div></div></div></div></div>';
+                
+            ?>
+            
+            <!--<div class="row">
                 <div class="col-12 col-md-6 col-lg-4">
                     <div class="card">
                         <img class="card-img-top" src="https://dummyimage.com/600x400/55595c/fff" alt="Card image cap">
@@ -285,7 +328,7 @@ if(empty($_SESSION['array'])){
                             </div>
                         </div>
                     </div>
-                </div>
+                </div>-->
                 <div class="col-12">
                     <nav aria-label="...">
                         <ul class="pagination">
