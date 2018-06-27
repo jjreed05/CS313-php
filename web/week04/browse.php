@@ -222,7 +222,7 @@ if(empty($_SESSION['array'])){
                 echo '<input type="number" name="index" value="'.$item->itemNum.'" hidden>';
                 echo '<input class="btn btn-success btn-block" type="submit" value="Add to Cart">';
                 echo '</form>';
-                echo '</div></div></div></div></div>';
+                echo '</div></div></div></div></div></div>';
             }
                 
             ?>
