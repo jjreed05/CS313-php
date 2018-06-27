@@ -1,4 +1,4 @@
-.row.equal {
+/*.row.equal {
     display: flex !important;
     display: -webkit-flex !important;
     flex-wrap: wrap !important;
@@ -15,7 +15,8 @@
 .col-md-4 {
     width: 100%;
     padding: 10px;
-}
+}*/
+
 
 body {
   padding-top: 54px;
@@ -25,8 +26,4 @@ body {
   body {
     padding-top: 56px;
   }
-}
-
-.card {
-  height: 100%;
 }
