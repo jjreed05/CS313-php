@@ -145,7 +145,7 @@ if(empty($_SESSION['array'])){
 <section class="jumbotron text-center">
     <div class="container">
         <h1 class="jumbotron-heading">Peace Dollar Coins</h1>
-        <p class="lead text-muted mb-0">Welcome to Peace Dollar Coins, this website is owned and operatoed by a fellow coin collector. We offer competetive rates and a variety of coins. Thanks for checking out the website </p>
+        <p class="lead text-muted mb-0">Welcome to Peace Dollar Coins, this website is owned and operated by a fellow coin collector. We offer competetive rates and a variety of coins. Thanks for checking out the website </p>
     </div>
 </section>
 <div class="container">
@@ -153,9 +153,7 @@ if(empty($_SESSION['array'])){
         <div class="col">
             <nav aria-label="breadcrumb">
                 <ol class="breadcrumb">
-                    <li class="breadcrumb-item"><a href="index.html">Home</a></li>
-                    <li class="breadcrumb-item"><a href="category.html">Category</a></li>
-                    <li class="breadcrumb-item active" aria-current="page">Sub-category</li>
+                    <li class="breadcrumb-item"><a href="browse.php">Home</a></li>
                 </ol>
             </nav>
         </div>
