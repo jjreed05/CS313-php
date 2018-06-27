@@ -29,7 +29,7 @@ foreach($rows as $row){
 <head>
     <title>Browse Items</title>
     <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=2">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
     
     <link rel="stylesheet" type="text/css"  href="browse.css"/>
     
@@ -144,8 +144,8 @@ if(empty($_SESSION['array'])){
 </nav>
 <section class="jumbotron text-center">
     <div class="container">
-        <h1 class="jumbotron-heading">E-COMMERCE CATEGORY</h1>
-        <p class="lead text-muted mb-0">Le Lorem Ipsum est simplement du faux texte employé dans la composition et la mise en page avant impression. Le Lorem Ipsum est le faux texte standard de l'imprimerie depuis les années 1500, quand un peintre anonyme assembla ensemble des morceaux de texte pour réaliser un livre spécimen de polices de texte...</p>
+        <h1 class="jumbotron-heading">Peace Dollar Coins</h1>
+        <p class="lead text-muted mb-0">Welcome to Peace Dollar Coins, this website is owned and operatoed by a fellow coin collector. We offer competetive rates and a variety of coins. Thanks for checking out the website </p>
     </div>
 </section>
 <div class="container">
