@@ -205,7 +205,7 @@ if(empty($_SESSION['array'])){
                 
                 echo '<div class="col-12 col-md-6 col-lg-4">';
                 echo '<div class="card">';
-                echo '<img class="img-responsive" src="'.$item->image.'" alt="'.$item->name.'">';
+                echo '<img class="img-responsive" src="'.$item->image.'" alt="'.$item->name.'" height="600" width="400">';
                 echo '<div class="card-body">';
                 echo '<h4 class="card-title">'.$item->name.'</h4>';
                 echo '<p class="card-text">'.$item->year.' '.$item->category.'</p>';
