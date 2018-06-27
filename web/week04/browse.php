@@ -223,6 +223,7 @@ if(empty($_SESSION['array'])){
                 echo '<input class="btn btn-success btn-block" type="submit" value="Add to Cart">';
                 echo '</form>';
                 echo '</div></div></div></div></div>';
+            }
                 
             ?>
             
