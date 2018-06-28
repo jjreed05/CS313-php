@@ -205,13 +205,13 @@ if(empty($_SESSION['array'])){
                 
                 echo '<div class="col-12 col-md-6 col-lg-4">';
                 echo '<div class="card">';
-                echo '<img class="img-responsive" src="'.$item->image.'" alt="'.$item->name.'" height="300" width="200">';
+                echo '<a href="'.$item->image.'" target="_blank">';
+                echo '<img class="img-responsive" id="img" src="'.$item->image.'" alt="'.$item->name.'" height="300" width="250"></a>';
                 echo '<div class="card-body">';
                 echo '<h4 class="card-title">'.$item->name.'</h4>';
                 echo '<p class="card-text">'.$item->year.' '.$item->category.'</p>';
                 echo '<div class="row">';
-                echo '<div class="col">';
-                echo '<p class="btn btn-danger btn-block">'.$item->price.'</p>';
+                echo '<div class="col">$ '.$item->price.'</p>';
                 echo '</div>';
                 echo '<div class="col">';
                 echo '<div class="input">';
