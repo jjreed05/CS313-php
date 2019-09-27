@@ -1,1 +1,1 @@
-CS 313 PHP Base Code
+ECommerce wbsite for a coin website. Written with PHP, PSQL, Javascript
